@@ -9,18 +9,6 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-  
-  
-  <script type="text/javascript">
-<!--
-if (screen.width <= 699) {
-document.location = "mobileindex.html";
-}
-//-->
-</script>
-  
-  
-  
 <div class="main">
   <div class="bio"><img class="profile-img" src="dj.jpg"/>
     <h3 class="header">Devi Jagannadh Kotha <img src="verified.jpg" height="14"></h3> 
@@ -30,28 +18,40 @@ document.location = "mobileindex.html";
 <p>Passionate Pen Tester ! </p></p></p> 
 
 <a class="bio-link" href="about.html">About me<i class="fa fa-at"></i></a>
-<a class="bio-link" href="https://github.com/devijagannadh-techdevp" target="_blank">Github<i class="fa fa-github"></i></a>
+<a class="bio-link" href="https://github.com/devijagannadh-techdevp">Github<i class="fa fa-github"></i></a>
 <a class="bio-link" href="https://codepen.io/alexboffey/">Blog<i class="fa fa-codepen"></i></a>
   </div>
   <div class="contact">
-    <form id="form">
-      <legend class="header">Get In Touch</legend>
-      <fieldset>
-        <label class="fa fa-user" for="name-input" aria-hidden="true"></label>
-        <input type="text" placeholder="Your name..." id="name-input"/>
-      </fieldset>
-      <fieldset>
-        <label class="fa fa-envelope" for="email-input" aria-hidden="true"></label>
-        <input type="email" placeholder="Your email..." id="email-input"/>
-      </fieldset>
-      <fieldset>
-        <label class="fa fa-comment" for="message-input" aria-hidden="true"></label>
-        <textarea placeholder="Your Message..." id="message-input"></textarea>
-      </fieldset>
-      <fieldset>
-        <button type="submit" id="btn-submit">Send</button>
-      </fieldset>
-<footer>
+    
+
+
+<form
+  action="https://formspree.io/f/xknpbqpw"
+  method="POST"
+>
+<legend class="header">Get In Touch</legend>
+
+  <label class ="fa fa-user">
+    Your email:
+    <input type="text" name="_replyto">
+  </label>
+
+
+  <label class="fa fa-envelope"> 
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+
+  <!-- your other form fields go here -->
+
+ <p> <button type="submit">Send</button></p>
+</form>
+
+
+
+
+
+
   <p>Direct Contact :<br>
   <a href="mailto:admin@thedj.tech">admin@thedj.tech</a></p>
 </footer>
