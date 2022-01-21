@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<B><a href="https://thedj.me">GO BACK (THEDJ.ME)</a></B>
+  <meta charset="UTF-8">
+  <title>CodePen - oneTileReactChartBaseNoHeader5</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,500'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+</head>
+
+<div style="display:none;">
+<div id="averagePercentChange" style="display:inline-block;width:200px; font-family:helvetica; font-size:15px; color: #fefefe;"></div>
+<div id="averageweek2Change" style="display:inline;font-family:helvetica; width: 200px; font-size:15px; color: #fefefe;"></div>
+<div id="averagemonth2Change" style="display:inline;font-family:helvetica; width: 200px; font-size:15px; color: #fefefe;"></div>
+
+<div id="averagequarter2Change" style="display:inline;font-family:helvetica; width: 200px; font-size:15px; color: #fefefe;"></div>
+<div id="averageytd2Change" style="display:inline-block;font-family:helvetica; width:auto; font-size:15px; color: #fefefe;"></div>
+<div id="averagerelvol1dChange" style="display:inline-block; width:200px; font-family:helvetica; font-size:15px; color: #fefefe;"></div>
+<div id="numberData" style="display:inline-block;font-family:helvetica; width: 200px; font-size:15px; color: #a0a0a0;"></div>
+</div>
+
+
+<br>
+
+
+
+<br>
+
+  <form style="display:none;" autocomplete="off">
+    <span>
+      <select class='dropdown' id="sortDropdown" name = "sortDropdown" onchange="sortDidChange()" >
+        <option value = "MarketCap" selected >Sort: MarketCap</option>
+        <option value = "Today %"> Sort: Today%</option>
+        <option value = "Week %">Sort: 1W%</option>
+        <option value = "Month %">Sort: 1M%</option>
+        <option value = "Quarter %">Sort: 3M%</option>
+        <option value = "Year to date %">Sort: YTD%</option>
+        <option value = "Volume1D">Sort: Volume1D</option>
+        <option value = "Volume1H">Sort: Volume1H</option>
+        <option value = "RelativeVolume1D" >Sort: RelativeVolD</option>
+        <option value = "RelativeVolume1H">Sort: RelativeVol1H</option>
+      </select>
+      <select class='dropdown' id="mapDropdown" name = "mapDropdown" onchange="mapDidChange()" >
+        <option class='dropdownitem' value = "Price" selected>Heatmap: Today%</option>
+        <option class='dropdownitem' value = "RelVolSolid">Heatmap: Solid</option>
+        <option class='dropdownitem' value = "Price1W%">Heatmap: 1W% </option>
+        <option class='dropdownitem' value = "Price1M%">Heatmap: 1M% </option>
+        <option class='dropdownitem' value = "Price1Q%">Heatmap: 3M% </option>
+        <option class='dropdownitem' value = "PriceYTD%">Heatmap: YTD% </option>
+        <option class='dropdownitem' value = "RelVol1D">Heatmap: RelVol1D </option>
+        <option class='dropdownitem' value = "RelVol1H">Heatmap: Relvol1H </option>
+         </option>
+      </select>
+      <button class="button" button onclick="generateCSV()"> Download Data CSV</button>
+      <a id="link" style="margin-left: 20px; font-family:helvetica;font-size:10px;color:#FFFFFF00;" href="#0">No CSV yet</a>
+    </span>
+      <input type="text" id="myInput" style="display:inline-block;margin-right:70px;" onkeyup="searchFunction()" placeholder="Search name, symbol, keyword ... " title="Type in a name"><br>
+  </form>
+  <br>
+    
+  <div id='onestream' class='onestream' style="display: inline-block; background-color : #000000;autowidth: true; height: 250px; width: 100%; border-radius:0px;border-style:none; padding: 22px;margin-left: 3px;margin-bottom: 3px;"> 
+      <div id = 'nameOut' class = 'nameOut' style = "font-family:helvetica;font-size:15px;font-style:bold;display:inline-block;width:auto;color:white;"></div>
+
+      <img id = 'coinIcon' src="" alt=" " style="float:right;width:40px;height:40px"/>
+      <br>
+      <div id = 'symOut' class = 'symOut' style = "font-family:helvetica-bold;font-size:40px;font-style:bold;display:inline-block;width:auto;color:#fefefe;">
+
+      </div>       
+      <br>
+      <div id = 'priceOut' class = 'priceOut' style = "font-family:helvetica-bold;font-size:30px;font-style:bold;display:inline-block;width:160px;color:#fefefe; animation-duration:3s;">
+      0.00
+      </div>
+      <div id = 'percentOut' class = 'percentOut' style = "font-family:helvetica;font-size:25px;font-style:light;display:inline-block;width:92px;color:#fefefe;">
+        0.00
+      </div>
+      <div id = 'changeOut' class = 'changeOut' style = "font-family:helvetica;font-size:18px;font-style:bold;display:inline-block;width:auto;color:#fefefe;">
+        0.00
+      </div>
+      <br>
+      <div id = 'open24Out' class = 'open24Out' style = "font-family:helvetica;font-size:8px;font-style:bold;display:none;width:100px;color:#a0a0a0;">
+      0.00
+      </div>
+      <div id= 'sectorOut' class = 'sectorOut' style = "font-family:helvetica;font-size:12px;font-style:bold;display:inline-block;width:auto;color:#c2c2c2;">
+
+      </div>   
+
+      <br>
+      <div id= 'descriptionOut' class = 'descriptionOut' style = "font-family:helvetica;font-size:7px;font-style:bold;display:none;width:auto;color:white;">
+      </div><div id= 'urlOut' class = 'urlOut' style = "font-family:helvetica;font-size:7px;font-style:bold;display:none;width:auto;color:white;">
+      </div><div id= 'abxOut' class = 'abxOut' style = "font-family:helvetica;font-size:7px;font-style:bold;display:none;width:auto;color:white;">
+      </div>
+
+     <div id = 'mktcapOut' class = 'mktcapOut' style = "font-family:helvetica;font-size:13px;font-style:bold;display:inline-block;width:200px;color:white;">
+      0.00
+      </div>
+   <div id = 'relvol1dlabelOut' class = 'relvol1dlabelOut' style = "font-family:helvetica-bold;font-size:16px;font-style:bold;display:inline-block;width:65px;color:#FF00FF;">
+
+      </div>
+  <div id = 'relvol1dOut' class = 'relvol1dOut' style = "font-family:helvetica-bold;font-size:16px;font-style:bold;display:inline-block;width:52px;color:#FF00FF;">
+      0.00
+      </div>
+
+      <br>
+     <div id = 'totalvolOut' class = 'totalvolOut' style = "font-family:helvetica;font-size:13px;font-style:bold;display:inline-block;width:200px;color:white;">
+      0.00
+      </div>
+   <div id= 'cointokenOut' class = 'cointokenOut' style = "font-family:helvetica;font-size:13px;font-style:bold;display:none;width:auto;color:#c2c2c2"> </div>
+
+      <div id = 'vol1hOut' class = 'vol1hOut' style = "font-family:helvetica;font-size:13px;font-style:bold;display:none;width:100px;color:#a0a0a0;">
+      0.00
+      </div>
+
+     <div id = 'relvol1hlabelOut' class = 'relvol1hlabelOut' style = "font-family:helvetica;font-size:14px;font-style:bold;display:inline-block;width:65px;color:#B026FF;">
+
+      </div>
+      <div id = 'relvol1hOut' class = 'relvol1hOut' style = "font-family:helvetica;font-size:14px;font-style:bold;display:inline-block;width:52px;color:#B026FF;">
+      0.00
+      </div>
+
+
+    <div id = 'avgvolOut' class = 'avgvolOut' style = "font-family:helvetica-bold;font-size:9px;font-style:bold;display:none;width:auto;color:#dcdcdc;">
+        0.00
+      </div>    <div id = 'cmccirculating2Out' class = 'cmccirculating2Out' style = "font-family:helvetica-bold;font-size:9px;font-style:bold;display:none;width:auto;color:#dcdcdc;">
+        0.00
+      </div>
+     <br><br>
+    <div id = 'weeklabelOut' class = 'weeklabelOut' style = "font-family:helvetica-bold;font-size:14px;font-style:bold;display:inline-block;width:14px;color:white;">
+      </div>
+      <div id = 'week2Out' class = 'week2Out' style = "font-family:helvetica-bold;font-size:14px;font-style:bold;display:inline-block;width:17%;color:white;">
+        0.00
+      </div>
+     <div id = 'monthlabelOut' class = 'monthlabelOut' style = "font-family:helvetica-bold;font-size:14px;font-style:bold;display:inline-block;width:14px;color:white;">
+      </div>
+      <div id = 'month2Out' class = 'month2Out' style = "font-family:helvetica-bold;font-size:14px;font-style:bold;display:inline-block;width:17%;color:white;">
+        0.00
+      </div>
+     <div id = 'quarterlabelOut' class = 'quarterlabelOut' style = "font-family:helvetica-bold;font-size:14px;font-style:bold;display:inline-block;width:21px;color:white;">
+      </div>
+      <div id = 'quarter2Out' class = 'quarter2Out' style = "font-family:helvetica-bold;font-size:14px;font-style:bold;display:inline-block;width:17%;color:white;">
+        0.00
+      </div>
+      <div id = 'ytdlabelOut' class = 'ytdlabelOut' style = "font-family:helvetica-bold;font-size:16px;font-style:bold;display:inline-block;width:30px;color:#fefefe;">
+ 
+      </div>
+      <div id = 'ytd2Out' class = 'ytd2Out' style = "font-family:helvetica-bold;font-size:18px;font-style:bold;display:inline-block;width:20%;color:#fefefe;">
+        0.00
+      </div>
+<div id = 'weekchangeOut' class = 'weekchangeOut' style = "font-family:helvetica;font-size:1px;font-style:bold;display:none;width:1px;color:#FFFFFF00;">
+        0.00
+      </div>
+<div id = 'monthchangeOut' class = 'monthchangeOut' style = "font-family:helvetica;font-size:1px;font-style:bold;display:none;width:1px;color:#FFFFFF00;">
+        0.00
+      </div>
+<div id = 'quarterchangeOut' class = 'quarterchangeOut' style = "font-family:helvetica;font-size:1px;font-style:bold;display:none;width:1px;color:#FFFFFF00;">
+        0.00
+      </div>
+      <div id = 'ytdchangeOut' class = 'ytdchangeOut' style = "font-family:helvetica;font-size:10px;font-style:bold;display:none;width:129px;color:#fefefe;">
+        0.00
+      </div> <br>    
+<div id = 'tradelinkOut' class = 'tradelinkOut' style = "font-family:helvetica;font-size:13px;font-style:bold;display:none;width:1px;color:#fefefe;">
+      </div>
+<a id='url2Out' href="" class = 'url2Out' style = "font-family:helvetica;font-size:14px;font-style:bold;display:inline-block;width:23px;color:#33c4f5"><a id='cmclink2Out' href="" class = 'cmclink2Out' style = "font-family:helvetica;font-size:14px;font-style:bold;display:inline-block;width:20px;color:#33c4f5"> <a id='twitter2Out' href="" class = 'twitter2Out' style = "font-family:helvetica;font-size:15px;font-style:bold;display:inline-block;width:22px;color:#33c4f5"><a id='explorer2Out' href="" class = 'explorer2Out' style = "font-family:helvetica;font-size:13px;font-style:bold;display:inline-block;width:24px;color:#33c4f5"><a id='talk2Out' href="" class = 'talk2Out' style = "font-family:helvetica;font-size:15px;font-style:bold;display:inline-block;width:23px;color:#33c4f5"><a id='reddit2Out' href="" class = 'reddit2Out' style = "font-family:helvetica;font-size:15px;font-style:bold;display:inline-block;width:22px;color:#33c4f5"><a id='github2Out' href="" class = 'github2Out' style = "font-family:helvetica;font-size:15px;font-style:bold;display:inline-block;width:23px;color:#33c4f5"><a id='tradelink2Out' href="" class = 'tradelink2Out' style = "font-family:helvetica;font-size:14px;font-style:bold;display:inline-block;width:23px;color:#33c4f5"><a id='moreOut' href="" class = 'moreOut' style = "font-family:helvetica;font-size:16px;font-style:bold;display:inline-block;float:right;width:15px;color:#33c4f5">
+      </div>
+<!-- partial -->
+  <script src='https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.min.js'></script>
+<script src='https://unpkg.com/react@16.5.0/umd/react.production.min.js'></script>
+<script src='https://unpkg.com/react-dom@16.5.0/umd/react-dom.production.min.js'></script>
+<script src='https://unpkg.com/styled-components@3.4.6/dist/styled-components.min.js'></script>
+<script src='https://unpkg.com/d3@5.7.0/dist/d3.min.js'></script>
+<script src='https://unpkg.com/d3-interpolate-path@2.0.1/build/d3-interpolate-path.min.js'></script><script  src="./script.js"></script>
+
+</body>
+<footer>
+<b>
+<a href="https://btc.thedj.me">btc.thedj.me</a>
+</footer>
+</html>
