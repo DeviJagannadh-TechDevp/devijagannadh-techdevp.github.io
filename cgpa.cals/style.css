@@ -1,0 +1,181 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+color:black;
+
+}
+
+body
+{
+  margin:auto;
+  background: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: center;
+  color:rgb(216, 215, 215);
+  font-family: 'Ubuntu', sans-serif;
+  text-shadow: 1px 2px black;
+}
+
+.row{
+  margin: auto;
+  width:100%;
+}
+
+.full{
+  margin-top: 200px;
+}
+
+
+h1{
+  margin-bottom:30px;
+  padding:10px;
+  font-size: 80px;
+  -webkit-text-stroke: 1px black;
+}
+
+
+
+p{
+  margin:20px;
+  font-size: 40px;
+}
+
+input{
+
+  height:30px;
+  width:180px;
+  padding:5px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+select{
+  background-color: rgba(255, 255, 255, 0.76);
+  height:30px;
+  width:180px;
+  color:black;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right:15px;
+  border-radius: 5px;
+}
+
+
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
+#sub6 {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+width:1111;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+.box1{
+  margin-top: 100px;
+  margin-bottom: 30px;
+  font-size: 35px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#gpa , #cgpa{
+  font-size: 50px;
+  margin:50px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.sem , .creds , .gpas{
+  margin:10px;
+}
+
+.home{
+  position: fixed;
+  right:250px;
+  bottom:20px;
+  /*transform :translate(-5%,-0.1%);*/
+}
+
+ 
+
+@media only screen and (max-width: 1195px)
+{
+  .body{
+    text-align:none;}
+  #col1{display: none;}
+  .col{min-width:50%;}
+  #col4{display:none;}
+}
+
+@media only screen and (max-width: 715px)
+{
+  .body{text-align:none; 
+    font-size:40px; 
+    margin-bottom: 40px;
+  }
+  .col{min-width:100%;}
+  #head{margin-top:50px;}
+  .box2{
+    margin-bottom: 20px;
+  }
+  .full{
+    margin-top:50px;
+    margin-bottom:50px;}
+    
+    .home{
+      position: fixed;
+      bottom:5px;
+      right:5px;
+    }
+  }
+
+@media only screen and (max-width: 425px)
+{
+    h1{
+    font-size:50px;
+  }
+  #gpa_cal, #cgpa_cal{
+    padding: 0px;
+  }
+  .full{
+    margin-top:50px;
+    margin-bottom:50px;}
+
+  .home{
+    position: fixed;
+    bottom:5px;
+    right:5px;
+  }
+
+  .box2{
+    margin-bottom: 20px;
+  }
+  
+  #sub3{margin-bottom: 10px;}
+  .credits{margin-top: 10px;}
+  select{margin-right:5px;}
+}
