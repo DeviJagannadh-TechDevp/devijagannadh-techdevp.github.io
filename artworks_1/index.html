@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Art Works | Arts By Dr. Surekha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Creators is a startup that helps content creators such as videographers, photographers, monetize their creative work." />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .container-fluid {
+            position: relative;
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 2; /* Ensure the navigation bar is above other elements */
+        }
+
+        #iframe-container {
+            position: absolute;
+            top: 70px; /* Adjust this value based on your navigation bar height */
+            left: 0;
+            width: 100%;
+            height: calc(100% - 70px); /* Adjust this value based on your navigation bar height */
+            z-index: 1; /* Ensure the iframe is behind the navigation bar */
+        }
+
+        .price-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- main container wrapper -->
+    <div class="container-fluid mainContainer">
+        <!-- Navigation menu section -->
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="#CarMarket">ArtsBy_RadhaSurekha</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about/index.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Art Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact/index.html">Contact</a>
+                    </li>
+                    <li class="nav-item last">
+                        <a class=
+                </ul>
+            </div>
+        </nav>
+        <!-- legend section -->
+        <div id="iframe-container">
+            <iframe id="myIframe" src="./iframe/index.html" frameborder="0" height="100%" width="100%"></iframe>
+        </div>
+        <!-- Price section -->
+
+        <!-- footer section -->
+        <footer class="footer">
+            <p class="footer__text">
+                Created by
+                <a href="https://www.linkedin.com/in/godfredgameli/" target="_blank" rel="noopener">Godfred Gameli</a>
+                &copy;2021
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Calculate and display the discount percentage
+        $(document).ready(function () {
+            var mrp = 1000; // Set your Maximum Retail Price here
+            var offerPrice = 800; // Set your Offer Price here
+            var discount = ((mrp - offerPrice) / mrp) * 100;
+
+            // Display values in the HTML
+            $("#mrp").text(mrp);
+            $("#offerPrice").text(offerPrice);
+            $("#discount").text(discount.toFixed(2) + "%");
+        });
+    </script>
+</body>
+
+</html>
