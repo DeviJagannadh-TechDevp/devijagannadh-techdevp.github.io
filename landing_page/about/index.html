@@ -12,53 +12,49 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
 
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: black;
-    }
-
-    .container-fluid {
-        position: relative;
-    }
-
-    .navbar {
-        position: relative;
-        z-index: 2;
-    }
-
-    #iframe-container {
-        position: absolute;
-        top: 70px; /* Adjust this value based on your navigation bar height */
-        left: 0;
-        width: 100%;
-        height: calc(100% - 70px);
-        z-index: 1;
-    }
-
-    .price-container {
-        margin-top: 20px;
-    }
-
-    /* Other existing styles */
-
-    @media screen and (max-width: 767px) {
         body {
-            overflow-x: auto;
+            margin: 0;
+            padding: 0;
+            background-color: black;
         }
 
-        body .mainContainer {
-            padding: 0 2%;
+        .container-fluid {
+            position: relative;
+            padding: 0;
         }
 
-        body .mainContainer #iframe-container {
-            top: 70px; /* Adjust this value based on your navigation bar height */
-            height: calc(100% - 70px);
+        .navbar {
+            position: relative;
+            z-index: 2;
         }
 
-        /* Other styles for mobile */
-    }
-</style>
+        #iframe-container {
+            position: relative;
+            margin-top: 70px; /* Adjust this value based on your navigation bar height */
+        }
+
+        .price-container {
+            margin-top: 20px;
+        }
+
+        /* Other existing styles */
+
+        @media screen and (max-width: 767px) {
+            body {
+                overflow-x: auto;
+            }
+
+            body .mainContainer {
+                padding: 0 2%;
+            }
+
+            body #iframe-container {
+                margin-top: 0; /* Adjust this value based on your layout */
+            }
+
+            /* Other styles for mobile */
+        }
+    </style>
 
 </head>
 
