@@ -11,35 +11,54 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
 
-    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+    }
+
+    .container-fluid {
+        position: relative;
+    }
+
+    .navbar {
+        position: relative;
+        z-index: 2;
+    }
+
+    #iframe-container {
+        position: absolute;
+        top: 70px; /* Adjust this value based on your navigation bar height */
+        left: 0;
+        width: 100%;
+        height: calc(100% - 70px);
+        z-index: 1;
+    }
+
+    .price-container {
+        margin-top: 20px;
+    }
+
+    /* Other existing styles */
+
+    @media screen and (max-width: 767px) {
         body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
+            overflow-x: auto;
         }
 
-        .container-fluid {
-            position: relative;
+        body .mainContainer {
+            padding: 0 2%;
         }
 
-        .navbar {
-            position: relative;
-            z-index: 2; /* Ensure the navigation bar is above other elements */
+        body .mainContainer #iframe-container {
+            top: 70px; /* Adjust this value based on your navigation bar height */
+            height: calc(100% - 70px);
         }
 
-        #iframe-container {
-            position: absolute;
-            top: 5px; /* Adjust this value based on your navigation bar height */
-            left: 0;
-            width: 100%;
-            height: calc(100% - 70px); /* Adjust this value based on your navigation bar height */
-            z-index: 1; /* Ensure the iframe is behind the navigation bar */
-        }
+        /* Other styles for mobile */
+    }
+</style>
 
-        .price-container {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -81,11 +100,7 @@
 
         </div>
         <!-- Price section -->
-        <div class="price-container">
-            <p>M.R.P: <span id="mrp">1000</span></p>
-            <p>Offer Price: <span id="offerPrice">800</span></p>
-            <p>Discount: <span id="discount">20%</span></p>
-        </div>
+       
         <!-- footer section -->
         <footer class="footer">
             <p class="footer__text">
