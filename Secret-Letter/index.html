@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Secret Letter</title>
+</head>
+<body>
+    <div class="envelope" id="envelope">
+        <div class="flap"></div>
+        <div class="body" id="envelope-body">
+            Click to open
+        </div>
+    </div>
+    <div class="password-form" id="password-form">
+        <input type="password" id="password" placeholder="Enter password">
+        <button id="submit">Submit</button>
+    </div>
+    <div class="letter" id="letter">
+         <iframe id="myIframe" src="./dist/index.html" frameborder="0" height="100%" width="100%"></iframe>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
