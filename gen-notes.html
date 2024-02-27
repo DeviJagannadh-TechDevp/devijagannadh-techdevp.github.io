@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Case Notes Generator</title>
+</head>
+<body>
+    <button id="copyButton" style="color: white; background-color: green; border: none; padding: 10px; margin-bottom: 10px;">Copy to Clipboard</button>
+    <h1 style="color: red;">Paste this content to ChatGPT to get the notes</h1>
+    <div id="output"></div>
+
+    <script>
+        var global1 = ", need a support case notes using below template and using below case summary";
+        var global2 = ", need a support case transfer notes using below template and using below case summary";
+
+        var case_notes_temp = "SUMMARY\n\n+++++++++++++++++++++++++++\n\nSCOPE\n\n[Issue Description]\n[Business Impact]\n[Expected Outcome]\n\n+++++++++++++++++++++++++++\n\nCASE SUMMARY\n\n[Environment]\n[Troubleshooting]\n\nAction Plan template:\n\nACTION PLAN\n\nCase Status: <who>\nNext Action: <what/why>\nNext Contact: <when>";
+
+        var transfer_notes_temp = "+++++++++++++++++++++++++++\n\nCase originated from:\nTransfer reason:\nSender's availability:\nBest contact method:\n\n+++++++++++++++++++++++++++\n\nCustomer language constraints:\n\n+++++++++++++++++++++++++++\n\nSummary\n\n+++++++++++++++++++++++++++\n\nScope:\n\n[Issue Description]\n[Business Impact]\n[Expected Outcome]\n\n+++++++++++++++++++++++++++\n\nCase Summary:\n\n[Environment]\n[Troubleshooting]\n\n+++++++++++++++++++++++++++\n\nAction Plan:\n\nCase Status: [who]\nNext Action: [what/why]\nNext Contact: [when]";
+
+        var selected = prompt("Select the template:\n1 - 1ST NOTES\n2 - TRANSFER NOTES");
+        var summary = prompt("Enter the summary text:");
+        var add_notes = prompt("Enter additional notes (if any):");
+
+        var final_string = "";
+
+        if (selected === "1") {
+            var temp = case_notes_temp;
+            final_string = summary + global1 + temp + add_notes;
+        } else if (selected === "2") {
+            var temp = transfer_notes_temp;
+            final_string = summary + global2 + temp + add_notes;
+        } else {
+            final_string = "Invalid selection";
+        }
+
+        document.getElementById("output").innerText = final_string;
+
+        // Copy to clipboard functionality
+        document.getElementById("copyButton").addEventListener("click", function() {
+            var textToCopy = document.getElementById("output").innerText;
+            navigator.clipboard.writeText(textToCopy)
+                .then(function() {
+                    console.log('Text copied to clipboard');
+                    alert('Text copied to clipboard');
+                })
+                .catch(function(err) {
+                    console.error('Unable to copy text to clipboard', err);
+                    alert('Unable to copy text to clipboard');
+                });
+        });
+    </script>
+</body>
+</html>
